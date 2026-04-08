@@ -1,0 +1,12 @@
+baseURL = "https://ljs.me.uk/"
+languageCode = "en-gb"
+title = "ljs.me.uk"
+
+[params]
+  description = "Luke Stuart — personal site"
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[permalinks]
+  posts = "/posts/:slug/"
