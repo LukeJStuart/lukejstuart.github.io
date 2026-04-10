@@ -13,16 +13,19 @@
   <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
   <meta property="og:site_name" content="{{ .Site.Title }}">
   <meta name="twitter:card" content="summary">
+  <meta name="theme-color" content="#000000">
+  <link rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" href="{{ "index.xml" | absURL }}">
   <link rel="stylesheet" href="{{ "css/main.css" | relURL }}">
 </head>
 <body>
+  <a href="#content" class="skip-link">skip to content</a>
   <header>
     <a href="{{ "/" | relURL }}" class="site-title">{{ .Site.Title }}</a>
     <nav>
       <a href="{{ "/posts/" | relURL }}">writing</a>
     </nav>
   </header>
-  <main>
+  <main id="content">
     {{ block "main" . }}{{ end }}
   </main>
   <footer>
