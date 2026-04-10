@@ -135,9 +135,14 @@ hr {
   margin: 2rem 0;
 }
 
-time {
+time,
+.reading-time {
   color: var(--muted);
   font-size: 0.9rem;
+}
+
+.reading-time::before {
+  content: "\00b7 ";
 }
 
 .post-list {
