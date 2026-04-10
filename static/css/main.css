@@ -7,6 +7,21 @@
   --code-bg: #f0f0f0;
 }
 
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  padding: 0.5rem 1rem;
+  background: var(--fg);
+  color: var(--bg);
+  text-decoration: none;
+  z-index: 100;
+}
+
+.skip-link:focus {
+  left: 0;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -83,6 +98,11 @@ a:hover {
   background: var(--fg);
   color: var(--bg);
   text-decoration: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--fg);
+  outline-offset: 2px;
 }
 
 blockquote {
