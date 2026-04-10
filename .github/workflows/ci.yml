@@ -1,19 +1,8 @@
-name: Deploy Hugo site to Pages
+name: CI
 
 on:
-  push:
+  pull_request:
     branches: [main]
-  workflow_dispatch:
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-# Allow one concurrent deployment, but don't cancel an in-progress run.
-concurrency:
-  group: pages
-  cancel-in-progress: false
 
 defaults:
   run:
@@ -37,10 +26,6 @@ jobs:
           submodules: recursive
           fetch-depth: 0
 
-      - name: Setup Pages
-        id: pages
-        uses: actions/configure-pages@v5
-
       - name: Build with Hugo
         env:
           HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
@@ -51,20 +36,10 @@ jobs:
             --minify \
             --printI18nWarnings \
             --printPathWarnings \
-            --baseURL "${{ steps.pages.outputs.base_url }}/"
+            --baseURL "https://ljs.me.uk/"
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: Check links
+        uses: lycheeverse/lychee-action@v2
         with:
-          path: ./public
-
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          args: --no-progress public/
+          fail: true
