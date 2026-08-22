@@ -25,7 +25,7 @@
     <a href="{{ "/" | relURL }}" class="site-title">{{ .Site.Title }}</a>
     <nav>
       <a href="{{ "/posts/" | relURL }}">writing</a>
-      <a href="{{ "/about/" | relURL }}">about</a>
+      {{ with .Site.GetPage "/about" }}<a href="{{ .RelPermalink }}">about</a>{{ end }}
     </nav>
   </header>
   <main id="content">
