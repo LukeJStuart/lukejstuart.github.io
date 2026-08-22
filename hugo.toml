@@ -4,6 +4,17 @@ title = "ljs.me.uk"
 
 [params]
   description = "Luke Stuart — personal site"
+  author = "Luke Stuart"
+
+# Single source of truth for profile URLs: the footer renders these as rel="me"
+# links and the homepage JSON-LD reuses the same list as sameAs.
+[[params.profiles]]
+  name = "github"
+  url = "https://github.com/LukeJStuart"
+
+[[params.profiles]]
+  name = "linkedin"
+  url = "https://www.linkedin.com/in/luke-stuart-a062981b3"
 
 [markup.goldmark.renderer]
   unsafe = true
