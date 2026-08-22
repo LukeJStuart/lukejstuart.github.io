@@ -3,6 +3,9 @@ name: CI
 on:
   pull_request:
     branches: [main]
+    # 'edited' is what catches a base-branch change. Without it, retargeting a
+    # stacked PR onto main lands it here with no checks at all.
+    types: [opened, synchronize, reopened, edited]
 
 defaults:
   run:
