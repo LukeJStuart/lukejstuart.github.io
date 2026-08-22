@@ -1,0 +1,11 @@
+version: 2
+updates:
+  # Keeps the pinned major tags (checkout@v4, lychee-action@v2, ...) from
+  # silently aging. Covers both workflows and the composite action.
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: "ci"
+    open-pull-requests-limit: 5
