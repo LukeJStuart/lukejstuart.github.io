@@ -6,5 +6,6 @@
       <span class="reading-time">{{ .ReadingTime }} min read</span>
     {{ end }}
     {{ .Content }}
+    {{ partial "post-terms.html" . }}
   </article>
 {{ end }}

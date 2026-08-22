@@ -2,6 +2,10 @@ baseURL = "https://ljs.me.uk/"
 languageCode = "en-gb"
 title = "ljs.me.uk"
 
+# Taxonomy terms are authored lowercase; AP title casing turned "css" into
+# "Css". Explicit front-matter titles are unaffected.
+capitalizeListTitles = false
+
 [params]
   description = "Luke Stuart — personal site"
   author = "Luke Stuart"
@@ -21,3 +25,9 @@ title = "ljs.me.uk"
 
 [permalinks]
   posts = "/posts/:slug/"
+
+# Hugo enables both of these by default. Declared explicitly so the taxonomy
+# pages are a deliberate feature rather than a side effect of the defaults.
+[taxonomies]
+  tag = "tags"
+  category = "categories"
