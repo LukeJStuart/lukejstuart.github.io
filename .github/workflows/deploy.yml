@@ -38,10 +38,14 @@ jobs:
         with:
           base-url: ${{ steps.pages.outputs.base_url }}/
 
+      # include-hidden-files defaults to false, which silently drops
+      # .well-known/ -- and with it security.txt -- from the artifact even
+      # though Hugo built it into public/.
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
         with:
           path: ./public
+          include-hidden-files: true
 
   deploy:
     environment:
