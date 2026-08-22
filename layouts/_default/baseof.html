@@ -22,6 +22,17 @@
   <meta name="color-scheme" content="light dark">
   <link rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" href="{{ "index.xml" | absURL }}">
   <link rel="stylesheet" href="{{ "css/main.css" | relURL }}">
+  {{ if .IsHome }}
+    {{ $sameAs := slice }}
+    {{ range .Site.Params.profiles }}{{ $sameAs = $sameAs | append .url }}{{ end }}
+    {{ $person := dict
+      "@context" "https://schema.org"
+      "@type" "Person"
+      "name" .Site.Params.author
+      "url" .Permalink
+      "sameAs" $sameAs }}
+  <script type="application/ld+json">{{ $person | jsonify (dict "indent" "  ") | safeJS }}</script>
+  {{ end }}
 </head>
 <body>
   <a href="#content" class="skip-link">skip to content</a>
@@ -38,6 +49,11 @@
   <footer>
     <hr>
     <p>luke stuart &middot; {{ now.Year }}</p>
+    {{ with .Site.Params.profiles }}
+    <nav class="profiles" aria-label="profiles">
+      {{ range . }}<a href="{{ .url }}" rel="me">{{ .name }}</a>{{ end }}
+    </nav>
+    {{ end }}
   </footer>
 </body>
 </html>

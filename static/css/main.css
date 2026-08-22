@@ -172,6 +172,14 @@ footer p {
   margin: 0;
 }
 
+footer .profiles {
+  margin-top: 0.5rem;
+}
+
+footer .profiles a {
+  margin-right: 1rem;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --bg: #111111;
