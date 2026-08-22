@@ -172,6 +172,48 @@ footer p {
   margin: 0;
 }
 
+.term-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.term-list li {
+  display: flex;
+  gap: 1rem;
+  align-items: baseline;
+  margin: 0.5rem 0;
+}
+
+.term-count,
+.term-meta {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.term-meta {
+  margin-top: 0;
+}
+
+.post-terms {
+  margin-top: 2rem;
+  border-top: 1px solid var(--rule);
+  padding-top: 1rem;
+  font-size: 0.9rem;
+}
+
+.post-terms .terms {
+  margin: 0.25rem 0;
+}
+
+.terms-label {
+  color: var(--muted);
+  margin-right: 0.5rem;
+}
+
+.post-terms a {
+  margin-right: 0.75rem;
+}
+
 footer .profiles {
   margin-top: 0.5rem;
 }

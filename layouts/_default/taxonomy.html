@@ -1,0 +1,37 @@
+{{/*
+  Serves two page kinds. Hugo 0.160 routes both the taxonomy list (/tags/) and
+  each term page (/tags/hugo/) here; a sibling term.html is never consulted, so
+  the branch below is doing the work a separate template would otherwise do.
+*/}}
+{{ define "main" }}
+  <article>
+    <h1>{{ .Title }}</h1>
+    {{ if eq .Kind "term" }}
+      <p class="term-meta">{{ .Data.Singular }} &middot; {{ len .Pages }}</p>
+    {{ end }}
+    {{ .Content }}
+    {{ if .Pages }}
+      {{ if eq .Kind "term" }}
+        <ul class="post-list">
+          {{ range .Pages.ByDate.Reverse }}
+            <li>
+              <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+              <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+            </li>
+          {{ end }}
+        </ul>
+      {{ else }}
+        <ul class="term-list">
+          {{ range .Pages.ByTitle }}
+            <li>
+              <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+              <span class="term-count">{{ len .Pages }}</span>
+            </li>
+          {{ end }}
+        </ul>
+      {{ end }}
+    {{ else }}
+      <p>nothing here yet.</p>
+    {{ end }}
+  </article>
+{{ end }}

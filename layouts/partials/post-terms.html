@@ -1,0 +1,14 @@
+{{- $page := . -}}
+{{- $any := false -}}
+{{- range $plural, $_ := $page.Site.Taxonomies -}}
+  {{- if $page.GetTerms $plural -}}{{- $any = true -}}{{- end -}}
+{{- end -}}
+{{- if $any }}
+    <div class="post-terms">
+      {{- range $plural, $_ := $page.Site.Taxonomies -}}
+        {{- with $page.GetTerms $plural }}
+      <p class="terms"><span class="terms-label">{{ $plural }}</span>{{ range . }}<a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ end }}</p>
+        {{- end -}}
+      {{- end }}
+    </div>
+{{- end -}}
