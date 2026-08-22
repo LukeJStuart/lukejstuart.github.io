@@ -36,9 +36,10 @@ runs:
           --baseURL "${{ inputs.base-url }}"
 
     # --root-dir is required for the site's root-relative links (/css/main.css)
-    # to resolve against the build output instead of erroring. LinkedIn answers
-    # non-browser clients with HTTP 999, so it can never be verified and is
-    # excluded rather than left to fail every build.
+    # to resolve against the build output instead of erroring. The two excluded
+    # targets both sit behind authentication, so no checker can reach them:
+    # LinkedIn answers non-browser clients with HTTP 999, and GitHub's advisory
+    # form redirects to a login page.
     - name: Check links
       uses: lycheeverse/lychee-action@v2
       with:
@@ -46,5 +47,6 @@ runs:
           --no-progress
           --root-dir ${{ github.workspace }}/public
           --exclude linkedin\.com
+          --exclude github\.com/.*/security/advisories/new
           public/
         fail: true

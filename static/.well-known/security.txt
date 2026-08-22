@@ -1,0 +1,9 @@
+# Security contact for ljs.me.uk
+# Reports go to GitHub's private vulnerability reporting on the repository
+# that builds this site. No email address is published here by design.
+
+Contact: https://github.com/LukeJStuart/lukejstuart.github.io/security/advisories/new
+Expires: 2027-08-01T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://ljs.me.uk/.well-known/security.txt
+Policy: https://github.com/LukeJStuart/lukejstuart.github.io/security/policy
